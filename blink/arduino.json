@@ -12,9 +12,13 @@
 
   "linker": "avr-gcc",
   "linker-flavor": "gcc",
-  "pre-link-args": ["-mmcu=atmega328p", "-nostartfiles", "../interrupt_vector.S"],
+  "pre-link-args": {
+    "gcc": ["-mmcu=atmega328p", "-nostartfiles", "../interrupt_vector.S"]
+  },
   "exe-suffix": ".elf",
-  "post-link-args": ["-Wl,--no-gc-sections"],
+  "post-link-args": {
+    "gcc": ["-Wl,--no-gc-sections"]
+  },
 
   "no-compiler-rt": true
 }
