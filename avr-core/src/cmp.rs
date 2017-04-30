@@ -81,6 +81,14 @@ pub trait Eq: PartialEq<Self> {
     fn assert_receiver_is_total_eq(&self) {}
 }
 
+// FIXME: this struct is used solely by #[derive] to
+// assert that every component of a type implements Eq.
+//
+// This struct should never appear in user code.
+#[doc(hidden)]
+#[allow(missing_debug_implementations)]
+pub struct AssertParamIsEq<T: Eq + ?Sized> { _field: ::marker::PhantomData<T> }
+
 /// An `Ordering` is the result of a comparison between two values.
 ///
 /// # Examples

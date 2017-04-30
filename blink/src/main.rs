@@ -1,5 +1,6 @@
 #![feature(no_core)]
 #![feature(asm)]
+#![feature(abi_avr_interrupt)]
 
 #![no_core]
 #![no_main]

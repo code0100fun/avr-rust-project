@@ -229,19 +229,6 @@ extern "rust-intrinsic" {
     /// crate it is invoked in.
     pub fn type_id<T: ?Sized + 'static>() -> u64;
 
-    /// Creates a value initialized to so that its drop flag,
-    /// if any, says that it has been dropped.
-    ///
-    /// `init_dropped` is unsafe because it returns a datum with all
-    /// of its bytes set to the drop flag, which generally does not
-    /// correspond to a valid value.
-    ///
-    /// This intrinsic is likely to be deprecated in the future when
-    /// Rust moves to non-zeroing dynamic drop (and thus removes the
-    /// embedded drop flags that are being established by this
-    /// intrinsic).
-    pub fn init_dropped<T>() -> T;
-
     /// Creates a value initialized to zero.
     ///
     /// `init` is unsafe because it returns a zeroed-out datum,
@@ -259,9 +246,6 @@ extern "rust-intrinsic" {
     /// initialize memory previous set to the result of `uninit`.
     pub fn uninit<T>() -> T;
 
-    /// Moves a value out of scope without running drop glue.
-    pub fn forget<T>(_: T) -> ();
-
     /// Unsafely transforms a value of one type into a value of another type.
     ///
     /// Both types must have the same size.
@@ -275,12 +259,6 @@ extern "rust-intrinsic" {
     /// assert_eq!(array, [82, 117, 115, 116]);
     /// ```
     pub fn transmute<T, U>(e: T) -> U;
-
-    /// Gives the address for the return value of the enclosing function.
-    ///
-    /// Using this intrinsic in a function that does not use an out pointer
-    /// will trigger a compiler error.
-    pub fn return_address() -> *const u8;
 
     /// Returns `true` if the actual type given as `T` requires drop
     /// glue; returns `false` if the actual type provided for `T`
