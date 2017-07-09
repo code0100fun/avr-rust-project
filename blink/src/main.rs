@@ -1,15 +1,23 @@
 #![feature(no_core)]
 #![feature(asm)]
 #![feature(abi_avr_interrupt)]
+#![feature(lang_items)]
+#![feature(core_intrinsics)]
 
 #![no_core]
 #![no_main]
 
-extern crate avr_core;
+extern crate core;
 
-use avr_core::prelude::*;
-use avr_core::intrinsics::{volatile_load, volatile_store};
-use avr_core::marker::PhantomData;
+use core::prelude::v1::*;
+use core::intrinsics::{volatile_load, volatile_store};
+use core::marker::PhantomData;
+
+#[lang = "eh_personality"]
+extern fn eh_personality() {}
+
+#[lang = "panic_fmt"]
+extern fn panic_fmt() -> ! { loop {} }
 
 pub mod avr {
     pub const DDRB:   *mut u8 = 0x24 as *mut u8;
