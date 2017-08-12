@@ -1,0 +1,15 @@
+[package]
+name = "PROJECT_NAME"
+version = "0.0.1"
+authors = ["Chase McCarthy <chase@code0100fun.com>"]
+
+[profile.release]
+lto = true
+
+[dependencies.core]
+git = "https://github.com/gergoerdi/rust-avr-libcore-mini"
+rev = "adda44a"
+
+[dependencies.arduino]
+git = "https://github.com/code0100fun/arduino"
+rev = "cargo"
