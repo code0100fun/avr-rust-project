@@ -18,8 +18,8 @@
     "gcc": [
       "-mmcu=atmega328p",
       "-nostartfiles",
-      "../interrupt_vector.S",
-      "../initialize_memory.S"
+      "interrupt_vector.S",
+      "initialize_memory.S"
     ]
   },
   "exe-suffix": ".elf",
