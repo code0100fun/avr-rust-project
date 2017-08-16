@@ -14,8 +14,8 @@ ${HEX}: ${COMPILED}
 
 # Download the HEX to the board
 .PHONY: program
-program: ${HEX}
-	avrdude -p atmega328p -c arduino -P ${SERIAL_PORT} -U flash:w:$<:i
+program:
+	avrdude -p atmega328p -c arduino -P ${SERIAL_PORT} -U flash:w:${HEX}:i
 
 .PHONY: connect-terminal
 connect-terminal:
