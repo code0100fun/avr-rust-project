@@ -1,5 +1,5 @@
-COMPILED:=target/arduino/release/blink.elf
-HEX:=blink.hex
+COMPILED:=target/arduino/release/PROJECT_NAME.elf
+HEX:=PROJECT_NAME.hex
 SERIAL_PORT:=/dev/cu.usbmodem1411
 
 all: ${HEX}
